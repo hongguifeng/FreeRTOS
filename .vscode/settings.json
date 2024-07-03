@@ -1,0 +1,6 @@
+{
+	"C_Cpp.intelliSenseEngine": "disabled",
+	"clangd.arguments": [
+        "--query-driver=/home/hong/code/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-gcc*",
+    ]
+}
