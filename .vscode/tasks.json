@@ -1,0 +1,46 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                //命令的执行目录
+                "cwd": "${workspaceRoot}/FreeRTOS/Demo/CORTEX_MPU_M3_MPS2_QEMU_GCC/",
+            },
+            "args": ["DEBUG=1"],
+            //错误匹配器, 可以将编译错误信息提示在编辑器中
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": ["relative", "${workspaceRoot}/FreeRTOS/Demo/CORTEX_MPU_M3_MPS2_QEMU_GCC/"],
+                "pattern": [ 
+                    {
+                        //通过正则表达式匹配错误信息，例如：example.c:6:12: error: 'x' undeclared）
+                        "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    }
+                ]
+            },
+            //设置为 build 组可以直接执行 “Run Build Task” 运行该task
+            "group": {
+                "kind":"build",
+                "isDefault": true
+            },
+            "presentation": {
+                //打开终端显示输出窗口
+                "reveal": "always",
+                //输出窗口多个task共享
+                "panel": "shared",
+                //清除旧终端中的内容
+                "clear": true
+            }
+        },
+    ]
+}
